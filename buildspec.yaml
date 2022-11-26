@@ -11,22 +11,21 @@ phases:
       - aws --version
       - echo login to ecr `aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 584315761995.dkr.ecr.us-east-1.amazonaws.com`..
       - REPOSITORY_URI=584315761995.dkr.ecr.us-east-1.amazon.com/mynewcustomecr.
-      - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+      
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Maven Application using war file..
       - mvn install
       - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - docker build -t 584315761995.dkr.ecr.us-east-1.amazon.com/mynewcustomecr:latest .
+      - docker tag 584315761995.dkr.ecr.us-east-1.amazon.com/mynewcustomecr:latest 584315761995.dkr.ecr.us-east-1.amazon.com/mynewcustomecr:v1
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Build successfully generated a war file
       - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:latest
-       - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push 584315761995.dkr.ecr.us-east-1.amazon.com/mynewcustomecr:latest
       - echo successfully build docker image and send to aws ecr.
 artifacts:
   files:
