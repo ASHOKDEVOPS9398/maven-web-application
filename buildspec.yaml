@@ -9,7 +9,7 @@ phases:
       - echo Nothing to do in the pre_build phase...
       - echo Logging in to Amazon ECR...
       - aws --version
-      - $(aws ecr get-login-password --region us-east-1 --no-include-email))
+      - $(aws ecr get-login-password --region us-east-1 --no-include-email)
       - REPOSITORY_URI=584315761995.dkr.ecr.us-east-1.amazon.com/mynewcustomecr.
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
