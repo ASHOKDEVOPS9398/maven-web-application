@@ -1,6 +1,6 @@
 ---
 - name: Create a websever
-  hosts: localhost
+  hosts: all
   become: true
   become_method: sudo
   vars:
