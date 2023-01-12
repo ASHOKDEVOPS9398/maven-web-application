@@ -6,5 +6,4 @@ ENV team=dev
 MAINTAINER Ashok <sappoguashok462@gmail.com>
 LABEL env=dev
 EXPOSE 8090
-CMD ["nginx"]
-ENTRYPOINT ["-g","daemon-off"]
+CMD ["nginx","-g","daemon-off"]
