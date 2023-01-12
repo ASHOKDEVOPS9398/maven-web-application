@@ -17,12 +17,7 @@
         enabled: yes
       tags:
         - enable
-    - name: start the httpd
-      service:
-        name: httpd
-        state: started
-      tags:
-        - start
+    
     - name: Create a file
       file:
         path: /root/mycustomfile1
