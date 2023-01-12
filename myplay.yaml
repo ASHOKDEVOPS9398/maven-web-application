@@ -3,6 +3,8 @@
   hosts: localhost
   become: true
   become_method: sudo
+  vars:
+    name: Ashok
   gather_facts: yes
   tasks:
     - name: Create a webserver
