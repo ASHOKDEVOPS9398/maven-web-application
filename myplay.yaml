@@ -1,0 +1,42 @@
+---
+- name: Create a websever
+  hosts: localhost
+  become: true
+  become_method: sudo
+  gather_facts: yes
+  tasks:
+    - name: Create a webserver
+      yum:
+        name: httpd
+        state: installed
+      tags:
+         - install
+    - name: enable a webserver
+      service:
+        name: httpd
+        enabled: yes
+      tags:
+        - enable
+    - name: start the httpd
+      service:
+        name: httpd
+        state: started
+      tags:
+        - start
+    - name: Create a file
+      file:
+        path: /root/mycustomfile1
+        owner: root
+        group: root
+        state: touch
+        mode: '0777'
+    - name: check the status
+      shell: systemctl status httpd
+    - name: create a another file
+      file:
+        path: /root/mynewfile
+        owner: root
+        group: root
+        state: touch
+        mode: '0777'
+        
