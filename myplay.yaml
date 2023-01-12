@@ -5,18 +5,7 @@
   become_method: sudo
   gather_facts: false
   tasks:
-    - name: Create a webserver
-      yum:
-        name: httpd
-        state: installed
-      tags:
-         - install
-    - name: enable a webserver
-      service:
-        name: httpd
-        enabled: yes
-      tags:
-        - enable
+    
     
     - name: Create a file
       file:
