@@ -3,9 +3,7 @@
   hosts: all
   become: true
   become_method: sudo
-  vars:
-    name: Ashok
-  gather_facts: yes
+  gather_facts: false
   tasks:
     - name: Create a webserver
       yum:
