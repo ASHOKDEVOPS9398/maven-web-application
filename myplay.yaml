@@ -14,8 +14,7 @@
         group: root
         state: touch
         mode: '0777'
-    - name: check the status
-      shell: systemctl status httpd
+    
     - name: create a another file
       file:
         path: /root/mynewfile
