@@ -1,2 +1,10 @@
-FROM tomcat:8.0.20-jre8
-COPY target/maven-web-application*.war /usr/local/tomcat/webapps/maven-web-application.war
+FROM nginx:latest
+RUN mkdir mywebapp
+COPY . .
+WORKDIR /mywebapp
+ENV team=dev
+MAINTAINER Ashok <sappoguashok462@gmail.com>
+LABEL env=dev
+EXPOSE 8090
+CMD ["nginx"]
+ENTRYPOINT ["-g","daemon-off"]
