@@ -3,10 +3,8 @@
   hosts: all
   become: true
   become_method: sudo
-  gather_facts: false
+  gather_facts:  yes
   tasks:
-    
-    
     - name: Create a file
       file:
         path: /root/mycustomfile1
@@ -14,7 +12,8 @@
         group: root
         state: touch
         mode: '0777'
-    
+    - name: check  the status
+      shell: nginx -v && git --version
     - name: create a another file
       file:
         path: /root/mynewfile
