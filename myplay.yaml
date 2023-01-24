@@ -6,18 +6,18 @@
   gather_facts:  yes
   tasks:
     - name: Create a file
+      become: true
       file:
         path: /root/mycustomfile1
         owner: root
-        become: true
         group: root
         state: touch
         mode: '0777'
     
     - name: create a another file
+      become: true
       file:
         path: /root/mynewfile
-        become: true
         owner: root
         group: root
         state: touch
