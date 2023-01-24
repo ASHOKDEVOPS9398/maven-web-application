@@ -9,14 +9,15 @@
       file:
         path: /root/mycustomfile1
         owner: root
+        become: true
         group: root
         state: touch
         mode: '0777'
-    - name: check  the status
-      shell: nginx -v && git --version
+    
     - name: create a another file
       file:
         path: /root/mynewfile
+        become: true
         owner: root
         group: root
         state: touch
